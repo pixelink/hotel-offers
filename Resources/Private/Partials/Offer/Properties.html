@@ -1,0 +1,92 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-hotel-offers" >
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.title" />
+		</td>
+		<td>
+		{offer.title}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.teaser" />
+		</td>
+		<td>
+		{offer.teaser}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.description" />
+		</td>
+		<td>
+		{offer.description}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.services" />
+		</td>
+		<td>
+		{offer.services}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.price" />
+		</td>
+		<td>
+		{offer.price}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.booking_range_start" />
+		</td>
+		<td>
+		{offer.bookingRangeStart -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.booking_range_end" />
+		</td>
+		<td>
+		{offer.bookingRangeEnd -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.persons" />
+		</td>
+		<td>
+		{offer.persons}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.link_booking_tool" />
+		</td>
+		<td>
+		{offer.linkBookingTool}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.image" />
+		</td>
+		<td>
+				<f:image src="{offer.image.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_hoteloffers_domain_model_offer.preview_image" />
+		</td>
+		<td>
+		{offer.previewImage}
+		</td>
+	</tr>
+</table>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-12T05:05:12Z" product-name="hotel_offers">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="teaser.description">
+				<source>teaser</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="services.description">
+				<source>services</source>
+			</trans-unit>
+			<trans-unit id="price.description">
+				<source>price</source>
+			</trans-unit>
+			<trans-unit id="booking_range_start.description">
+				<source>bookingRangeStart</source>
+			</trans-unit>
+			<trans-unit id="booking_range_end.description">
+				<source>bookingRangeEnd</source>
+			</trans-unit>
+			<trans-unit id="persons.description">
+				<source>persons</source>
+			</trans-unit>
+			<trans-unit id="link_booking_tool.description">
+				<source>linkBookingTool</source>
+			</trans-unit>
+			<trans-unit id="image.description">
+				<source>image</source>
+			</trans-unit>
+			<trans-unit id="preview_image.description">
+				<source>previewImage</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>category</source>
+			</trans-unit>
+			<trans-unit id="offer_range.description">
+				<source>offerRange</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

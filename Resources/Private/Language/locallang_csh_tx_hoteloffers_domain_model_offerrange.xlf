@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-12T05:05:12Z" product-name="hotel_offers">
+		<header/>
+		<body>
+			<trans-unit id="offer_start.description">
+				<source>offerStart</source>
+			</trans-unit>
+			<trans-unit id="offer_end.description">
+				<source>offerEnd</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
