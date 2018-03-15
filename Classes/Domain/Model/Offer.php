@@ -92,14 +92,16 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * previewImage
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
      */
     protected $previewImage = '';
 
     /**
      * category
      *
-     * @var \Pixelink\HotelOffers\Domain\Model\Category
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pixelink\HotelOffers\Domain\Model\Category>
+     * @cascade remove
      */
     protected $category = null;
 
@@ -130,6 +132,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
+        $this->category = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->offerRange = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
@@ -344,48 +347,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the previewImage
-     *
-     * @return string $previewImage
-     */
-    public function getPreviewImage()
-    {
-        return $this->previewImage;
-    }
-
-    /**
-     * Sets the previewImage
-     *
-     * @param string $previewImage
-     * @return void
-     */
-    public function setPreviewImage($previewImage)
-    {
-        $this->previewImage = $previewImage;
-    }
-
-    /**
-     * Returns the category
-     *
-     * @return \Pixelink\HotelOffers\Domain\Model\Category $category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Sets the category
-     *
-     * @param \Pixelink\HotelOffers\Domain\Model\Category $category
-     * @return void
-     */
-    public function setCategory(\Pixelink\HotelOffers\Domain\Model\Category $category)
-    {
-        $this->category = $category;
-    }
-
-    /**
      * Adds a OfferRange
      *
      * @param \Pixelink\HotelOffers\Domain\Model\OfferRange $offerRange
@@ -426,5 +387,69 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setOfferRange(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $offerRange)
     {
         $this->offerRange = $offerRange;
+    }
+
+    /**
+     * Returns the previewImage
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference previewImage
+     */
+    public function getPreviewImage()
+    {
+        return $this->previewImage;
+    }
+
+    /**
+     * Sets the previewImage
+     *
+     * @param string $previewImage
+     * @return void
+     */
+    public function setPreviewImage($previewImage)
+    {
+        $this->previewImage = $previewImage;
+    }
+
+    /**
+     * Adds a Category
+     *
+     * @param \Pixelink\HotelOffers\Domain\Model\Category $category
+     * @return void
+     */
+    public function addCategory(\Pixelink\HotelOffers\Domain\Model\Category $category)
+    {
+        $this->category->attach($category);
+    }
+
+    /**
+     * Removes a Category
+     *
+     * @param \Pixelink\HotelOffers\Domain\Model\Category $categoryToRemove The Category to be removed
+     * @return void
+     */
+    public function removeCategory(\Pixelink\HotelOffers\Domain\Model\Category $categoryToRemove)
+    {
+        $this->category->detach($categoryToRemove);
+    }
+
+    /**
+     * Returns the category
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pixelink\HotelOffers\Domain\Model\Category> $category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Sets the category
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pixelink\HotelOffers\Domain\Model\Category> $category
+     * @return void
+     */
+    public function setCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category)
+    {
+        $this->category = $category;
     }
 }

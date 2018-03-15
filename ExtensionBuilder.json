@@ -140,7 +140,7 @@
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "previewImage",
-                            "propertyType": "String",
+                            "propertyType": "Image",
                             "uid": "982723173371"
                         }
                     ]
@@ -153,9 +153,9 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "category",
-                            "relationType": "zeroToOne",
+                            "relationType": "zeroToMany",
                             "relationWire": "[wired]",
-                            "renderType": "selectSingleBox",
+                            "renderType": "inline",
                             "uid": "1129844614092"
                         },
                         {
@@ -351,7 +351,7 @@
         }
     ],
     "log": {
-        "last_modified": "2018-03-12 05:05",
+        "last_modified": "2018-03-12 05:32",
         "extension_builder_version": "8.7.0",
         "be_user": " (1)"
     }

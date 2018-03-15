@@ -112,11 +112,11 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:hotel_offers/Resources/Private/Language/locallang_db.xlf:tx_hoteloffers_domain_model_offerrange.offer_start',
             'config' => [
-                'dbType' => 'datetime',
+                'dbType' => 'date',
                 'type' => 'input',
-                'size' => 12,
-                'eval' => 'datetime',
-                'default' => '0000-00-00 00:00:00'
+                'size' => 7,
+                'eval' => 'date',
+                'default' => '0000-00-00'
             ],
         ],
         'offer_end' => [
@@ -130,7 +130,7 @@ return [
                 'default' => '0000-00-00'
             ],
         ],
-    
+
         'offer' => [
             'config' => [
                 'type' => 'passthrough',

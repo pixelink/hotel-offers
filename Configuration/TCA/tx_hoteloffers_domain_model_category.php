@@ -118,5 +118,10 @@ return [
             ],
         ],
     
+        'offer' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
     ],
 ];

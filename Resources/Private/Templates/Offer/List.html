@@ -1,58 +1,34 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:layout name="Default" />
-
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
+<f:layout name="Default"/>
 <f:section name="main">
-<h1>Listing for Offer</h1>
+	<section class="ws-offers mt-3">
+		<div class="row">
+			<div class="col-md-4">
+				<img src="/fileadmin/user_upload/Angebote/Angebote_uebersicht.jpg" class="img-fluid" />
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-9 x-borderLeft">
 
-<f:flashMessages />
+						<f:comment><div class="x-categoryList">
 
-<table  class="tx_hoteloffers" >
-	<tr>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.title" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.teaser" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.description" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.services" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.price" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.booking_range_start" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.booking_range_end" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.persons" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.link_booking_tool" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.image" /></th>
-		<th><f:translate key="tx_hoteloffers_domain_model_offer.preview_image" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
-
-	<f:for each="{offers}" as="offer">
-		<tr>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.title}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.teaser}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.description}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.services}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.price}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.bookingRangeStart -> f:format.date()}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.bookingRangeEnd -> f:format.date()}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.persons}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.linkBookingTool}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.image.originalResource.name}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{offer : offer}"> {offer.previewImage}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{offer : offer}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{offer : offer}">Delete</f:link.action></td>
-		</tr>
-	</f:for>
-</table>
-
-<f:link.action action="new">New Offer</f:link.action>
+							<f:link.action class="allOfferLink" action="list">
+								<i class="fa fa-tag" aria-hidden="true"></i>  Alle anzeigen
+							</f:link.action>
+							<f:for each="{categories}" as="category">
+								<f:link.action class="allOfferLink" action="list" arguments="{category : category}">
+									<i class="fa fa-tag" aria-hidden="true"></i> {category.title}
+								</f:link.action>
+							</f:for>
+													</div>
+						</f:comment>
+				<f:for each="{offers}" as="offer">
+					<f:render partial="Offer/Offerpreview" arguments="{offer : offer}"/>
+				</f:for>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </f:section>
 </html>

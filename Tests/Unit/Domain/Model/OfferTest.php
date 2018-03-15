@@ -282,10 +282,10 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getPreviewImageReturnsInitialValueForString()
+    public function getPreviewImageReturnsInitialValueForFileReference()
     {
-        self::assertSame(
-            '',
+        self::assertEquals(
+            null,
             $this->subject->getPreviewImage()
         );
     }
@@ -293,12 +293,13 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setPreviewImageForStringSetsPreviewImage()
+    public function setPreviewImageForFileReferenceSetsPreviewImage()
     {
-        $this->subject->setPreviewImage('Conceived at T3CON10');
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setPreviewImage($fileReferenceFixture);
 
         self::assertAttributeEquals(
-            'Conceived at T3CON10',
+            $fileReferenceFixture,
             'previewImage',
             $this->subject
         );
@@ -309,8 +310,9 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getCategoryReturnsInitialValueForCategory()
     {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            null,
+            $newObjectStorage,
             $this->subject->getCategory()
         );
     }
@@ -318,16 +320,52 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setCategoryForCategorySetsCategory()
+    public function setCategoryForObjectStorageContainingCategorySetsCategory()
     {
-        $categoryFixture = new \Pixelink\HotelOffers\Domain\Model\Category();
-        $this->subject->setCategory($categoryFixture);
+        $category = new \Pixelink\HotelOffers\Domain\Model\Category();
+        $objectStorageHoldingExactlyOneCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneCategory->attach($category);
+        $this->subject->setCategory($objectStorageHoldingExactlyOneCategory);
 
         self::assertAttributeEquals(
-            $categoryFixture,
+            $objectStorageHoldingExactlyOneCategory,
             'category',
             $this->subject
         );
+    }
+
+    /**
+     * @test
+     */
+    public function addCategoryToObjectStorageHoldingCategory()
+    {
+        $category = new \Pixelink\HotelOffers\Domain\Model\Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $categoryObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'category', $categoryObjectStorageMock);
+
+        $this->subject->addCategory($category);
+    }
+
+    /**
+     * @test
+     */
+    public function removeCategoryFromObjectStorageHoldingCategory()
+    {
+        $category = new \Pixelink\HotelOffers\Domain\Model\Category();
+        $categoryObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $categoryObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($category));
+        $this->inject($this->subject, 'category', $categoryObjectStorageMock);
+
+        $this->subject->removeCategory($category);
     }
 
     /**

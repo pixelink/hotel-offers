@@ -248,28 +248,60 @@ return [
         'preview_image' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hotel_offers/Resources/Private/Language/locallang_db.xlf:tx_hoteloffers_domain_model_offer.preview_image',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'preview_image',
+                [
+                    'appearance' => [
+                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                    ],
+                    'foreign_types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ]
+                    ],
+                    'maxitems' => 1
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            ),
         ],
         'category' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hotel_offers/Resources/Private/Language/locallang_db.xlf:tx_hoteloffers_domain_model_offer.category',
             'config' => [
-                'type' => 'inline',
+                'type' => 'select',
+                'renderType' => 'selectCheckBox',
                 'foreign_table' => 'tx_hoteloffers_domain_model_category',
-                'minitems' => 0,
-                'maxitems' => 1,
-                'appearance' => [
-                    'collapseAll' => 0,
-                    'levelLinksPosition' => 'top',
-                    'showSynchronizationLink' => 1,
-                    'showPossibleLocalizationRecords' => 1,
-                    'showAllLocalizationLink' => 1
-                ],
+                'maxitems' => 10,
+                'size' => 5,
             ],
+
         ],
         'offer_range' => [
             'exclude' => true,
@@ -289,6 +321,6 @@ return [
             ],
 
         ],
-    
+
     ],
 ];

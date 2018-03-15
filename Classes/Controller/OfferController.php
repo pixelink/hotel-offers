@@ -32,8 +32,14 @@ class OfferController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function listAction()
     {
+
+        //$categories = $this->offerRepository->findAllCategories();
+        //$category = $this->offerRepository->findCategoryById($this->request->getArgument('category'));
+
         $offers = $this->offerRepository->findAll();
+        //$offers = $this->offerRepository->findByCategory($this->request->getArgument('category'));
         $this->view->assign('offers', $offers);
+        //$this->view->assign('categories', $categories);
     }
 
     /**

@@ -1,0 +1,14 @@
+<div class="row x-offerItem">
+	<div class="col-md-5">
+		<f:image src="{offer.previewImage.uid}" class="img-fluid" treatIdAsReference="1"/>
+	</div>
+	<div class="col-md-7">
+		<h3 class="alpha"><f:link.action action="show" arguments="{offer : offer}"> {offer.title}</f:link.action></h3>
+		<p>
+			<f:format.html parseFuncTSPath="">{offer.teaser}</f:format.html> <f:link.action action="show" arguments="{offer : offer}">mehr</f:link.action>
+		</p>
+	</div>
+</div>
+
+
+

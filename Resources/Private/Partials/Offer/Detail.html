@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:section name="offer">
+	<section class="ws-offer mt-3">
+		<div class="row">
+			<div class="col-md-4">
+				<f:image src="{offer.image.uid}" treatIdAsReference="1" alt="{offer.image.alt}" class="img-fluid"/>
+				<f:link.page pageUid="9"><button type="button" class="btn btn-success btn-sm mt-5">Zurück zur Übersicht</button></f:link.page>
+			</div>
+			<div class="col-md-8 x-borderLeft">
+				<h2>{offer.title}</h2>
+				<f:format.html>{offer.description}</f:format.html>
+				<p>
+				<h4>Im Angebot sind folgende <br/>Leistungen enthalten</h4>
+				</p>
+				<div class="row">
+					<div class="col-md-8">
+						<f:format.html>{offer.services}</f:format.html>
+					</div>
+					<div class="col-md-4">
+						<div class="x-offer-pricetag">
+							ab <f:format.currency currencySign="€" prependCurrency="1" decimals="2">{offer.price}</f:format.currency>
+						</div>
+						<div class="x-offer-label">
+							Dieses Angebot ist buchbar:
+							<br><br>
+
+							<f:for each="{offer.offerRange}" as="range">
+								{range.offerStart -> f:format.date(format: 'd.m.Y')} - {range.offerStart -> f:format.date(format: 'd.m.Y')}<br/>
+							</f:for>
+							<br><br>
+							<f:link.external uri="{offer.linkBookingTool}" target="_blank"><button class="btn btn-sm btn-block">Jetzt buchen</button></f:link.external>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</f:section>
+</html>

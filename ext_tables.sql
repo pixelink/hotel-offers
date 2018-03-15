@@ -16,8 +16,8 @@ CREATE TABLE tx_hoteloffers_domain_model_offer (
 	persons varchar(255) DEFAULT '' NOT NULL,
 	link_booking_tool varchar(255) DEFAULT '' NOT NULL,
 	image int(11) unsigned NOT NULL default '0',
-	preview_image varchar(255) DEFAULT '' NOT NULL,
-	category int(11) unsigned DEFAULT '0',
+	preview_image int(11) unsigned NOT NULL default '0',
+	category int(11) unsigned DEFAULT '0' NOT NULL,
 	offer_range int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -58,6 +58,8 @@ CREATE TABLE tx_hoteloffers_domain_model_category (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
+
+	offer int(11) unsigned DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
 
@@ -101,7 +103,7 @@ CREATE TABLE tx_hoteloffers_domain_model_offerrange (
 
 	offer int(11) unsigned DEFAULT '0' NOT NULL,
 
-	offer_start datetime DEFAULT '0000-00-00 00:00:00',
+	offer_start date DEFAULT '0000-00-00',
 	offer_end date DEFAULT '0000-00-00',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -131,6 +133,15 @@ CREATE TABLE tx_hoteloffers_domain_model_offerrange (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
 	KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
+# Table structure for table 'tx_hoteloffers_domain_model_category'
+#
+CREATE TABLE tx_hoteloffers_domain_model_category (
+
+	offer int(11) unsigned DEFAULT '0' NOT NULL,
 
 );
 
